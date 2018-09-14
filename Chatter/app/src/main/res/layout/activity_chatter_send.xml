@@ -14,7 +14,7 @@
         android:textSize="28sp" />
 
     <EditText
-        android:id="@+id/textview_send_chat"
+        android:id="@+id/edittext_send_chat"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="20dp"
