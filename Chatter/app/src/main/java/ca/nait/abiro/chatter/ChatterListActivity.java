@@ -1,8 +1,8 @@
-package ca.nait.gschenk.chatter;
+package ca.nait.abiro.chatter;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.ListActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -13,61 +13,46 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
+import java.util.ArrayList;
 
-public class ChatterReceiveActivity extends AppCompatActivity
+public class ChatterListActivity extends ListActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chatter_receive);
-
         getFromChatter();
     }
 
     private void getFromChatter()
     {
         BufferedReader in = null;
-        TextView textview = (TextView)findViewById(R.id.textview_receive_chatter);
+        ArrayList chats = new ArrayList();
         try
         {
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
             request.setURI(new URI("http://www.youcode.ca/JSONServlet"));
-            HttpResponse response= client.execute(request);
+            HttpResponse response =client.execute(request);
             in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-           // StringBuffer sb = new StringBuffer("");
+
             String line = "";
-           // String NL = System.getProperty("line.separator");
 
             while((line = in.readLine()) != null)
-            {
-                //sb.append(line + NL);
-               // System.out.println(line);
+                {
+                    chats.add(line);
+                }
+                in.close();
 
-                textview.append(line + "\n");
-            }
-            in.close();
+            ArrayAdapter<ArrayList> adapter =
+                    new ArrayAdapter<ArrayList>(this, android.R.layout.simple_list_item_1, chats);
+            this.setListAdapter(adapter);
 
         }
         catch(Exception e)
         {
             Toast.makeText(this, "Error: " + e, Toast.LENGTH_LONG).show();
         }
-
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,4 @@
-package ca.nait.gschenk.chatter;
+package ca.nait.abiro.chatter;
 
 import org.junit.Test;
 

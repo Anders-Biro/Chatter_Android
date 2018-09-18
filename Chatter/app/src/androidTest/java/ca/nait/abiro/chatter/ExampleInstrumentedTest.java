@@ -1,4 +1,4 @@
-package ca.nait.gschenk.chatter;
+package ca.nait.abiro.chatter;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

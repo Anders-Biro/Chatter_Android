@@ -1,4 +1,4 @@
-package ca.nait.gschenk.chatter;
+package ca.nait.abiro.chatter;
 
 import android.content.Intent;
 import android.os.StrictMode;
@@ -19,7 +19,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
