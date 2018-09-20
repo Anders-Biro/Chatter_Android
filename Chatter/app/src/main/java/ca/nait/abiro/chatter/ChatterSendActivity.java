@@ -62,6 +62,12 @@ public class ChatterSendActivity extends AppCompatActivity implements View.OnCli
                 this.startActivity(intent);
                 break;
             }
+            case R.id.menu_item_custom_list:
+            {
+                Intent intent = new Intent(this, ChatterCustomListActivity.class);
+                this.startActivity(intent);
+                break;
+            }
         }
         return true;
     }

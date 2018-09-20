@@ -11,15 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="ca.nait.abiro.chatter.ChatterSendActivity">
+        <activity android:name=".ChatterSendActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ca.nait.abiro.chatter.ChatterReceiveActivity" />
-        <activity android:name="ca.nait.abiro.chatter.ChatterListActivity"></activity>
+        <activity android:name=".ChatterReceiveActivity" />
+        <activity android:name=".ChatterListActivity" />
+        <activity android:name=".ChatterCustomListActivity"></activity>
     </application>
 
 </manifest>
