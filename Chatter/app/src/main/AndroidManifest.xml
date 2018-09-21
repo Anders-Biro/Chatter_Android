@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".ChatterReceiveActivity" />
         <activity android:name=".ChatterListActivity" />
-        <activity android:name=".ChatterCustomListActivity"></activity>
+        <activity android:name=".ChatterCustomListActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
