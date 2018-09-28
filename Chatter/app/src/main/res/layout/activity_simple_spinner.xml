@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ca.nait.abiro.chatter.SimpleSpinnerActivity">
+
+    <Spinner
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:id="@+id/spinner_grades"
+        android:textSize="12sp"
+        android:entries="@array/grade_ranges"/>
+
+    <TextView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:background="#cceeee"
+        android:id="@+id/textview_grade"/>
+
+</android.support.constraint.ConstraintLayout>
