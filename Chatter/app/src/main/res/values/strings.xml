@@ -11,5 +11,6 @@
     <string name="prefs_user_password_title">Password</string>
     <string name="prefs_main_bgcolor">Set your main background color</string>
     <string name="prefs_main_bgcolor_title">Background color</string>
+    <string name="spinner_prompt">Select one..</string>
 
 </resources>

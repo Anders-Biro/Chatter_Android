@@ -22,7 +22,8 @@
         <activity android:name=".ChatterListActivity" />
         <activity android:name=".ChatterCustomListActivity" />
         <activity android:name=".SettingsActivity" />
-        <activity android:name=".SimpleSpinnerActivity"></activity>
+        <activity android:name=".SimpleSpinnerActivity" />
+        <activity android:name=".ChatterObjectActivity"></activity>
     </application>
 
 </manifest>

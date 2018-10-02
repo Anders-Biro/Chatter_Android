@@ -13,6 +13,9 @@
         android:id="@+id/menu_item_settings"
         android:title="Settings"></item>
     <item
-        android:id="@+id/menu_item_grade_spinner"
-        android:title="Grade Spinner"></item>
+    android:id="@+id/menu_item_grade_spinner"
+    android:title="Grade Spinner"></item>
+    <item
+        android:id="@+id/menu_item_object_spinner"
+        android:title="Object Spinner"></item>
 </menu>
