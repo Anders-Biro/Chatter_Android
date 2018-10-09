@@ -1,6 +1,7 @@
 package abiro.nait.ca.week05;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,6 +31,15 @@ public class Week05Activity extends AppCompatActivity implements View.OnClickLis
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week05);
+
+        //this is a hack to allow us to use the main UI thread
+        //will be removed when we learn how to multithread.
+        if (android.os.Build.VERSION.SDK_INT > 9)
+        {
+            StrictMode.ThreadPolicy policy =
+                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
 
         Button postButton = (Button)findViewById(R.id.button_post_message);
         postButton.setOnClickListener(this);
