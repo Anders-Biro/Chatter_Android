@@ -29,6 +29,7 @@ public class DBManager extends SQLiteOpenHelper
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion)
     {
+        //normally you would copy the users existing data to the new database before deleting.
         database.execSQL("drop table if exists " + TABLE_NAME);
         Log.d(TAG, "onUpgrade");
         onCreate(database);

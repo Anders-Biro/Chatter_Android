@@ -1,6 +1,8 @@
 package abiro.nait.ca.week05;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,20 +28,14 @@ import java.util.List;
 public class Week05Activity extends AppCompatActivity implements View.OnClickListener
 {
     private static final String TAG = "Week05Activity";
+    ProgressDialog pd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_week05);
 
-        //this is a hack to allow us to use the main UI thread
-        //will be removed when we learn how to multithread.
-        if (android.os.Build.VERSION.SDK_INT > 9)
-        {
-            StrictMode.ThreadPolicy policy =
-                    new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
 
         Button postButton = (Button)findViewById(R.id.button_post_message);
         postButton.setOnClickListener(this);
@@ -57,7 +53,8 @@ public class Week05Activity extends AppCompatActivity implements View.OnClickLis
                 EditText editText = (EditText)findViewById(R.id.edit_text_message);
                 String message = editText.getText().toString();
 
-                postToChatter(message);
+                pd = ProgressDialog.show(this, "", "Posting message");
+                new ChatWriter().execute(message);
 
                 editText.setText("");
                 break;
@@ -107,7 +104,44 @@ public class Week05Activity extends AppCompatActivity implements View.OnClickLis
                 stopService(new Intent(this, GetterService.class));
                 break;
             }
+            case R.id.menu_item_show_chatter:
+            {
+                startService(new Intent(this, ShowChatter.class));
+                break;
+            }
         }
         return true;
+    }
+    private class ChatWriter extends AsyncTask<String, Void, String>
+    {
+        @Override
+        protected void onPostExecute(String s)
+        {
+            pd.dismiss();
+        }
+
+        @Override
+        protected String doInBackground(String... strings)
+        {
+            String message = strings[0];
+
+            try
+            {
+                HttpClient client = new DefaultHttpClient();
+                HttpPost post = new HttpPost("http://www.youcode.ca/JitterServlet");
+                List<NameValuePair> formParameters = new ArrayList<NameValuePair>();
+                formParameters.add(new BasicNameValuePair("DATA", message));
+                formParameters.add(new BasicNameValuePair("LOGIN_NAME", "Ders"));
+                UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(formParameters);
+                post.setEntity(formEntity);
+                client.execute(post);
+            }
+            catch(Exception e)
+            {
+                Toast.makeText(Week05Activity.this, "Error: " + e, Toast.LENGTH_LONG).show();
+            }
+
+            return null;
+        }
     }
 }
