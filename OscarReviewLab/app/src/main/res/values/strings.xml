@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">OscarReviews</string>
+    <string name="main_textview_category">Select a category...</string>
+    <string name="main_textview_nominee">Nominee:</string>
+    <string name="main_textview_review">Your review: </string>
+    <string name="radio_best_picture">Best Picture</string>
+    <string name="radio_best_actor">Best Actor</string>
+    <string name="radio_best_actress">Best Actress</string>
+    <string name="radio_film_editing">Film Editing</string>
+    <string name="radio_visual_effects">Visual Effects</string>
+    <string name="main_button_submit">Submit</string>
+    <string name="prefs_user_name_summary">Set your user name here.</string>
+    <string name="prefs_user_name_title">Login Name</string>
+    <string name="prefs_user_pw_summary">Set your password here.</string>
+    <string name="prefs_user_pw_title">Password</string>
+    <string name="prefs_bg_color_summary">Select a color for your main background</string>
+    <string name="prefs_bg_color_title">Background Color</string>
+</resources>
