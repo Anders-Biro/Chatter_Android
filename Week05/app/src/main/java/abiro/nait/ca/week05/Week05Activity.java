@@ -109,6 +109,11 @@ public class Week05Activity extends AppCompatActivity implements View.OnClickLis
                 startService(new Intent(this, ShowChatter.class));
                 break;
             }
+            case R.id.menu_item_cursor_list:
+            {
+                startService(new Intent(this, ChatCursorAdapterActivity.class));
+                break;
+            }
         }
         return true;
     }

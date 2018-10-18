@@ -10,5 +10,8 @@
     <item
         android:id="@+id/menu_item_show_chatter"
         android:title="Show Chatter"/>
+    <item
+        android:id="@+id/menu_item_cursor_list"
+        android:title="Cursor List"/>
 
 </menu>

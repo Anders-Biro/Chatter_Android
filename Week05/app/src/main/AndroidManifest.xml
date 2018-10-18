@@ -24,7 +24,8 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".ShowChatter"></activity>
+        <activity android:name=".ShowChatter" />
+        <activity android:name=".ChatCursorAdapterActivity"></activity>
     </application>
 
 </manifest>
