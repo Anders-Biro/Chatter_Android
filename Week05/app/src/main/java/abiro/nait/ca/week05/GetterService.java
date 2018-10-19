@@ -34,11 +34,7 @@ public class GetterService extends Service
 
     }
 
-    @Override
-    public IBinder onBind(Intent intent)
-    {
-        return null;
-    }
+
 
     @Override
     public void onCreate()
@@ -67,6 +63,12 @@ public class GetterService extends Service
         reader.interrupt();
         reader = null;
         Log.d(TAG, "onDestroy() ... thread stopped");
+    }
+
+    @Override
+    public IBinder onBind(Intent intent)
+    {
+        return null;
     }
     private class MyReaderThread extends Thread
     {
@@ -103,7 +105,7 @@ public class GetterService extends Service
                 HttpClient client = new DefaultHttpClient();
                 HttpGet request = new HttpGet();
                 request.setURI(new URI("http://www.youcode.ca/Week05Servlet"));
-                HttpResponse response= client.execute(request);
+                HttpResponse response = client.execute(request);
                 in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
                 String line = "";
@@ -114,7 +116,7 @@ public class GetterService extends Service
                 while((line = in.readLine()) != null)
                 {
                     values.clear();
-                    values.put(DBManager.C_ID, Integer.parseInt(line));
+                    values.put(DBManager.C_ID, Integer.parseInt(line) );
 
                     line = in.readLine();
                     values.put(DBManager.C_SENDER, line);
@@ -130,17 +132,17 @@ public class GetterService extends Service
                         database.insertOrThrow(DBManager.TABLE_NAME, null, values);
                         Log.d(TAG, "Record inserted");
                     }
-                    catch (SQLException e)
+                    catch(SQLException e)
                     {
-                        //ignore duplicate records
+                        // ignore duplicate records
                         Log.d(TAG, "duplicate record");
                     }
-                }//closes while
+                } // closes while
                 database.close();
             }
             catch (Exception e)
             {
-                //Toast.makeText(this, "Error: " + e, Toast.LENGTH_LONG).show();
+
             }
         }
     }

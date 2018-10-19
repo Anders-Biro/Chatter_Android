@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class ShowChatter extends AppCompatActivity
 {
-    static final String TAG = "showChatter";
+    static final String TAG = "ShowChatter";
     DBManager dbManager;
     SQLiteDatabase database;
     Cursor cursor;
@@ -21,7 +21,6 @@ public class ShowChatter extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_chatter);
-
         textview = (TextView)findViewById(R.id.text_view_show_chatter);
 
         dbManager = new DBManager(this);
@@ -31,14 +30,14 @@ public class ShowChatter extends AppCompatActivity
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume()
+    {
         String sender, date, data, output;
-
-        cursor = database.query(DBManager.TABLE_NAME, null, null, null, null, null,
-                DBManager.C_ID + " DESC");
+        cursor = database.query(DBManager.TABLE_NAME,
+                null,null,null,null,null,DBManager.C_ID + " DESC");
 
         startManagingCursor(cursor);
-        while (cursor.moveToNext())
+        while(cursor.moveToNext())
         {
             sender = cursor.getString(cursor.getColumnIndex(DBManager.C_SENDER));
             date = cursor.getString(cursor.getColumnIndex(DBManager.C_DATE));
@@ -48,9 +47,7 @@ public class ShowChatter extends AppCompatActivity
 
             textview.append(output);
         }
-
         Log.d(TAG, "onResume()");
-
         super.onResume();
     }
 
@@ -60,4 +57,5 @@ public class ShowChatter extends AppCompatActivity
         database.close();
         super.onDestroy();
     }
+
 }

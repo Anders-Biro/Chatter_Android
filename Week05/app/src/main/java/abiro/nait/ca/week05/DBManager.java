@@ -39,7 +39,7 @@ public class DBManager extends SQLiteOpenHelper
     public void onCreate(SQLiteDatabase database)
     {
         String sql = "create table " + TABLE_NAME + " (" + C_ID + " int primary key, "
-                    + C_DATE + " text, " + C_SENDER + " text, " + C_DATA + " text)";
+                + C_DATE + " text, " + C_SENDER + " text, " + C_DATA + " text)";
         Log.d(TAG, sql);
         database.execSQL(sql);
     }
