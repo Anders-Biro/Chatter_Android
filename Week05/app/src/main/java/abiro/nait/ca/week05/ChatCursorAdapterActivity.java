@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-public class ChatCursorAdapterActivity extends AppCompatActivity
+public class ChatCursorAdapterActivity extends BaseActivity
 {
     static final String TAG = "ChatCursorListActivity";
     DBManager dbManager;

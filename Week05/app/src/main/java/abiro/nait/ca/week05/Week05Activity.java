@@ -26,7 +26,7 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Week05Activity extends AppCompatActivity implements View.OnClickListener
+public class Week05Activity extends BaseActivity implements View.OnClickListener
 {
     private static final String TAG = "Week05Activity";
     ProgressDialog pd;
@@ -40,7 +40,6 @@ public class Week05Activity extends AppCompatActivity implements View.OnClickLis
         sendButton.setOnClickListener(this);
 
         Log.d(TAG,"onCreate() called");
-
     }
 
     @Override
@@ -59,64 +58,6 @@ public class Week05Activity extends AppCompatActivity implements View.OnClickLis
                 break;
             }
         }
-    }
-    /*
-    private void postToChatter(String message)
-    {
-        try
-        {
-            HttpClient client = new DefaultHttpClient();
-            HttpPost request = new HttpPost("http://www.youcode.ca/JitterServlet");
-            List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-            postParameters.add(new BasicNameValuePair("DATA", message));
-            postParameters.add(new BasicNameValuePair("LOGIN_NAME", "Gerry"));
-            UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
-            request.setEntity(formEntity);
-            HttpResponse response = client.execute(request);
-
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(this, "Error: " + e, Toast.LENGTH_LONG).show();
-        }
-    }
-    */
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch(item.getItemId())
-        {
-            case R.id.menu_item_start_service:
-            {
-                startService(new Intent(this,GetterService.class));
-                break;
-            }
-            case R.id.menu_item_stop_service:
-            {
-                stopService(new Intent(this,GetterService.class));
-                break;
-            }
-            case R.id.menu_item_show_chatter:
-            {
-                startActivity(new Intent(this, ShowChatter.class));
-                break;
-            }
-            case R.id.menu_item_cursor_list:
-            {
-                startActivity(new Intent(this, ChatCursorAdapterActivity.class));
-                break;
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main_menu,menu);
-        return true;
     }
 
     private class ChatWriter extends AsyncTask<String, Void, String>

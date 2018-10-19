@@ -23,7 +23,7 @@ public class GetterService extends Service
 {
     static final String TAG = "GetterService";
     static final int DELAY = 10000; //Milliseconds --- 1000 MS in 1 S
-    private boolean bRun = false;
+    static public boolean bRun = false;
     private MyReaderThread reader = null;
 
     DBManager dbManager;
